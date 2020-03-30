@@ -1,21 +1,25 @@
-import React, {Component} from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import MovieHeader from './components/movieheader';
+import Authentication from './components/authentication';
+import {HashRouter,Route} from 'react-router-dom';
+import { Provider } from 'react-redux'
+import store from './stores/store'
 
-class App extends Component{
-  render() {
+function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-		<h1 className="App-title">Welcome to React -Deployed to Github</h1>
-	  </header>
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-    </div>
+      <div className="App">
+        <Provider store={store}>
+          <HashRouter>
+            <div>
+              <MovieHeader />
+              <Route exact path="/" render={()=><div />}/>
+              <Route path="/signin" render={()=><Authentication />}/>
+            </div>
+          </HashRouter>
+        </Provider>
+      </div>
   );
-  }
 }
 
 export default App;
