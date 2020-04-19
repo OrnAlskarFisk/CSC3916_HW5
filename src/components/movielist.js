@@ -22,7 +22,7 @@ class MovieList extends Component {
 
     handleSelect(selectedIndex, e) {
         const {dispatch} = this.props;
-        dispatch(fetchMovie(this.props.movies[selectedIndex]));
+        dispatch(fetchMovies(this.props.movies[selectedIndex]));
     }
 
     handleClick = (movie) => {
