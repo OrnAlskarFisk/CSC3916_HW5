@@ -41,7 +41,7 @@ export function submitReview(review){
 	formBody = formBody.join("&");
 	
     return dispatch => {
-        return fetch(`${env.REACT_APP_API_URL}/reviews`, {
+        return fetch(`${env.REACT_APP_API_URL}reviews`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
