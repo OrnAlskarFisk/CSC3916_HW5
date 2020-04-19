@@ -18,16 +18,16 @@ class Movie extends Component {
 
     render() {
         const ActorInfo = ({actors}) => {
-            return actors.map((actor, i) =>
-                <p key={i}>
+            return actors.map((actor) =>
+                <p key={actor.actorName}>
                     <b>{actor.actorName}</b> {actor.characterName}
                 </p>
             )
         }
 
         const ReviewInfo = ({reviews}) => {
-            return reviews.map((review, i) =>
-                <p key={i}>
+            return reviews.map((review) =>
+                <p key={review.user_id}>
                     <b>{review.username}</b> {review.review}
                     <Glyphicon glyph={'star'} /> {review.rating}
                 </p>
