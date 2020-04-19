@@ -5,27 +5,27 @@ function moviesFetched(movies){
     return {
         type: actionTypes.FETCH_MOVIES,
         movies: movies
-    }
+    };
 }
 
 function movieFetched(movie){
     return {
         type: actionTypes.FETCH_MOVIE,
         selectedMovie: movie
-    }
+    };
 }
 
 function movieSet(movie){
     return {
         type: actionTypes.SET_MOVIE,
         selectedMovie: movie
-    }
+    };
 }
 
 export function setMovie(movie) {
     return dispatch => {
         dispatch(movieSet(movie));
-    }
+    };
 }
 
 export function fetchMovies(){
@@ -49,7 +49,7 @@ export function fetchMovies(){
                 dispatch(moviesFetched(res));
             })
             .catch( (e) => console.log(e) );
-    }
+    };
 }
 
 export function fetchMovie(movieId){
@@ -73,5 +73,5 @@ export function fetchMovie(movieId){
                 dispatch(movieFetched(res));
             })
             .catch( (e) => console.log(e) );
-    }
+    };
 }
