@@ -15,12 +15,11 @@ class App extends Component {
                 <Provider store={store}>
                 <HashRouter>
                     <div>
-                        <MovieHeader />
-                        <Route exact path="/" render={()=><div />}/>
-                        <Route path="/signin" render={()=><Authentication />}/>
-						<Route exact path="/" render={()=><MovieList />}/>
+                         <MovieHeader />
+                        <Route exact path="/" render={()=><MovieList />}/>
                         <Route path="/movielist" render={()=><MovieList />}/>
                         <Route path="/movie/:movieId" render={()=><Movie />}/>
+                        <Route path="/signin" render={()=><Authentication />}/>
                     </div>
                 </HashRouter>
                 </Provider>
