@@ -22,7 +22,7 @@ class MovieList extends Component {
 
     handleSelect(selectedIndex, e) {
         const {dispatch} = this.props;
-        dispatch(fetchMovies(this.props.movies[selectedIndex]));
+        dispatch(setMovie(this.props.movies[selectedIndex]));
     }
 
     handleClick = (movie) => {
@@ -39,7 +39,7 @@ class MovieList extends Component {
 
             return (
                 <Carousel onSelect={this.handleSelect}>
-                    {movieList.map((movie) =>
+                    {movieList.movies.map((movie) =>
                     <Carousel.Item key={movie._id}>
                         <div>
                             <LinkContainer to={'/movie/'+movie._id} onClick={()=>this.handleClick(movie)}>
