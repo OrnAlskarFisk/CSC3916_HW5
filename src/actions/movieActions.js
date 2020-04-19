@@ -1,37 +1,37 @@
 import actionTypes from '../constants/actionTypes';
 import runtimeEnv from '@mars/heroku-js-runtime-env';
 
-function moviesFetched(movies){
+function moviesFetched(movies) {
     return {
         type: actionTypes.FETCH_MOVIES,
         movies: movies
-    };
+    }
 }
 
-function movieFetched(movie){
+function movieFetched(movie) {
     return {
         type: actionTypes.FETCH_MOVIE,
         selectedMovie: movie
-    };
+    }
 }
 
-function movieSet(movie){
+function movieSet(movie) {
     return {
         type: actionTypes.SET_MOVIE,
         selectedMovie: movie
-    };
+    }
 }
 
 export function setMovie(movie) {
     return dispatch => {
-        dispatch(movieSet(movie));
-    };
+        dispatch(movieSet(movie))
+    }
 }
 
-export function fetchMovies(){
+export function fetchMovies() {
     const env = runtimeEnv();
     return dispatch => {
-        return fetch('${env.REACT_APP_API_URL}/movies?reviews=true', {
+        return fetch(`${env.REACT_APP_API_URL}/movies?reviews=true`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -49,13 +49,13 @@ export function fetchMovies(){
                 dispatch(moviesFetched(res));
             })
             .catch( (e) => console.log(e) );
-    };
+    }
 }
 
 export function fetchMovie(movieId){
     const env = runtimeEnv();
     return dispatch => {
-        return fetch('${env.REACT_APP_API_URL}/movies/${movieId}?reviews=true', {
+        return fetch(`${env.REACT_APP_API_URL}/movies/${movieId}?reviews=true`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -73,5 +73,5 @@ export function fetchMovie(movieId){
                 dispatch(movieFetched(res));
             })
             .catch( (e) => console.log(e) );
-    };
+    }
 }
