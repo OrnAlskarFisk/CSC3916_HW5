@@ -62,10 +62,10 @@ class Movie extends Component {
         const ReviewInfo = ({reviews}) => {
             return reviews.map((review, i) =>
                 <p key={i}>
-                    <b>{review.reviewer}</b> {review.quote} &nbsp;&nbsp;&nbsp;
+                    <b>{review.username}</b> {review.review}
                     <Glyphicon glyph={'star'} /> {review.rating}
                 </p>
-            );
+            )
         }
 
         const ReviewForm = ({currentMovie}) => {
@@ -107,22 +107,22 @@ class Movie extends Component {
         }
 
         const DetailInfo = ({currentMovie}) => {
-            if (!currentMovie) { // evaluates to true if currentMovie is null
+            if (!currentMovie) { //if not could still be fetching the movie
                 return <div>Loading...</div>;
             }
             return (
                 <Panel>
-                    <Panel.Heading key="movieDetailHeading">Movie Detail</Panel.Heading>
-                    <Panel.Body key="movieImage"><Image className="image" src={currentMovie.imageUrl} thumbnail /></Panel.Body>
-                    <ListGroup key="movieDetailList">
+                    <Panel.Heading>Movie Detail</Panel.Heading>
+                    <Panel.Body><Image className="image" src={currentMovie.imageUrl} thumbnail /></Panel.Body>
+                    <ListGroup>
                         <ListGroupItem>{currentMovie.title}</ListGroupItem>
                         <ListGroupItem><ActorInfo actors={currentMovie.actors} /></ListGroupItem>
-                        <ListGroupItem><h4><Glyphicon glyph={'star'} /> {currentMovie.avgRating} </h4></ListGroupItem>
+                        <ListGroupItem><h4><Glyphicon glyph={'star'}/> {currentMovie.avgRating} </h4></ListGroupItem>
                     </ListGroup>
                     <Panel.Body><ReviewInfo reviews={currentMovie.reviews} /></Panel.Body>
                 </Panel>
             );
-        };
+        }
         return (
             <div>
                 <DetailInfo currentMovie={this.props.selectedMovie} />
